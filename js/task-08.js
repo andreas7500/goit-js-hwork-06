@@ -29,13 +29,18 @@ form.addEventListener('submit', event => {
   if (email.value === '' || password.value === '') {
     return alert('Please fill in all the fields!');
   }
-  const formData = new FormData(event.currentTarget);
-  console.log(formData);
-  formData.forEach((value, name) => {
-    console.log('onForm -> name', name);
-    console.log('onForm -> value', value);
-  });
+  // const formData = new FormData(event.currentTarget);
 
-  console.log(`email: ${email.value}, Password: ${password.value}`);
+  // formData.forEach((value, name) => {
+  //   console.log('onForm -> name', name);
+  //   console.log('onForm -> value', value);
+  // });
+  const formData = {
+    email: email.value,
+    password: password.value,
+  };
+  console.log(formData);
+
+  // console.log(`email: ${email.value}, Password: ${password.value}`);
   event.currentTarget.reset();
 });

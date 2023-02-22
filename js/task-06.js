@@ -1,30 +1,16 @@
-// Напиши скрипт, який під час втрати фокусу на інпуті(подія blur),
-//     перевіряє його вміст щодо правильної кількості введених символів.
-{
-  /* <input type="text"
-    id="validation-input"
-    data-length="6"
-    placeholder="Please enter 6 symbols"
-/>; */
-}
-// Яка кількість символів повинна бути в інпуті,
-//     зазначається в його атрибуті data - length.
-// Якщо введена правильна кількість символів, то border інпуту
-// стає зеленим, якщо неправильна кількість - червоним.
-// Для додавання стилів використовуй CSS - класи valid і invalid,
-//     які ми вже додали у вихідні файли завдання.
-const input = document.querySelector('#validation-input');
-const textLimit = input.getAttribute('data-length');
+const textInput = document.querySelector('#validation-input');
 
-input.addEventListener('blur', function (event) {
-  if (event.currentTarget.value.length == textLimit) {
-    this.className = 'valid';
+console.log(textInput.getAttribute('data-length'));
+
+textInput.addEventListener('blur', event => {
+  if (Number(textInput.getAttribute('data-length')) === event.currentTarget.value.length) {
+    textInput.classList.add('valid');
+    textInput.classList.remove('invalid');
+  } else if (Number(textInput.getAttribute('data-length')) === 0) {
+    textInput.classList.add('invalid');
+    textInput.classList.remove('valid');
   } else {
-    this.className = 'invalid';
+    textInput.classList.add('invalid');
+    textInput.classList.remove('valid');
   }
-  true;
-});
-
-input.addEventListener('focus', function (event) {
-  event.currentTarget.value = '';
 });

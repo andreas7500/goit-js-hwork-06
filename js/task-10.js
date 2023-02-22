@@ -11,7 +11,7 @@ function createBoxes(amount) {
     let elem = document.createElement('div');
 
     elem.style.width = 30 + 10 * i + 'px';
-    elem.style.height = 30 + 'px';
+    elem.style.height = 30 + 10 * i + 'px';
     elem.style.backgroundColor = getRandomHexColor();
 
     refs.boxesEl.append(elem);
@@ -27,6 +27,7 @@ refs.createEl.addEventListener('click', function () {
 
 refs.destroyEl.addEventListener('click', function () {
   refs.boxesEl.innerHTML = '';
+  refs.amountEl.value = '';
 });
 
 function getRandomHexColor() {
